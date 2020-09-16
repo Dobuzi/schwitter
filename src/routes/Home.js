@@ -1,9 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { dbService } from "../fbase";
 
 const Home = () => {
     const [schweet, setSchweet] = useState("");
-    const onSubmit = (event) => {
+    const [schweets, setSchweets] = useState([]);
+    const getSchweets = async () => {
+        const dbSchweets = await dbService.collection("schweets").get();
+        dbSchweets.forEach((document) => {
+            const schweetObject = {
+                ...document.data(),
+                id: document.id,
+            };
+            setSchweets((prev) => [schweetObject, ...prev]);
+        });
+    };
+    useEffect(() => {
+        getSchweets();
+    }, []);
+    const onSubmit = async (event) => {
         event.preventDefault();
+        await dbService.collection("schweets").add({
+            schweet,
+            createdAt: Date.now(),
+        });
+        setSchweet("");
     };
     const onChange = (event) => {
         const {
@@ -23,6 +43,13 @@ const Home = () => {
                 />
                 <input type="submit" value="Schweet" />
             </form>
+            <div>
+                {schweets.map((schweet) => (
+                    <div key={schweet.id}>
+                        <h4>{schweet.schweet}</h4>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 };
