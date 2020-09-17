@@ -1,27 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { dbService } from "../fbase";
 
-const Home = () => {
+const Home = ({ userObj }) => {
     const [schweet, setSchweet] = useState("");
     const [schweets, setSchweets] = useState([]);
-    const getSchweets = async () => {
-        const dbSchweets = await dbService.collection("schweets").get();
-        dbSchweets.forEach((document) => {
-            const schweetObject = {
-                ...document.data(),
-                id: document.id,
-            };
-            setSchweets((prev) => [schweetObject, ...prev]);
-        });
-    };
     useEffect(() => {
-        getSchweets();
+        dbService.collection("schweets").onSnapshot((snapshot) => {
+            const schweetArray = snapshot.docs.map((doc) => ({
+                id: doc.id,
+                ...doc.data(),
+            }));
+            setSchweets(schweetArray);
+        });
     }, []);
     const onSubmit = async (event) => {
         event.preventDefault();
         await dbService.collection("schweets").add({
-            schweet,
+            text: schweet,
             createdAt: Date.now(),
+            author: userObj.uid,
         });
         setSchweet("");
     };
@@ -46,7 +43,7 @@ const Home = () => {
             <div>
                 {schweets.map((schweet) => (
                     <div key={schweet.id}>
-                        <h4>{schweet.schweet}</h4>
+                        <h4>{schweet.text}</h4>
                     </div>
                 ))}
             </div>
