@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { dbService } from "../fbase";
+import { dbService, storageService } from "../fbase";
 
 const Pang = ({ pangObj, isAuthor }) => {
     const [editing, setEditing] = useState(false);
@@ -8,6 +8,7 @@ const Pang = ({ pangObj, isAuthor }) => {
         const ok = window.confirm("Are you sure you want to delete this pang?");
         if (ok) {
             await dbService.doc(`pangs/${pangObj.id}`).delete();
+            await storageService.refFromURL(pangObj.attachmentURL).delete();
         }
     };
     const toggleEditing = () => setEditing((prev) => !prev);
