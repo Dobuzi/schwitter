@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { dbService } from "../fbase";
+import { dbService, storageService } from "../fbase";
+import { v4 as uuidv4 } from "uuid";
 
 import Pang from "../components/Pang";
 
@@ -23,6 +24,11 @@ const Home = ({ userObj }) => {
             createdAt: Date.now(),
             author: userObj.uid,
         });
+        const fileRef = storageService
+            .ref()
+            .child(`${userObj.uid}/${uuidv4()}`);
+        const response = await fileRef.putString(attachment, "data_url");
+        console.log(response);
         setPang("");
     };
     const onChange = (event) => {
