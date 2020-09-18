@@ -19,17 +19,26 @@ const Home = ({ userObj }) => {
     }, []);
     const onSubmit = async (event) => {
         event.preventDefault();
-        await dbService.collection("pangs").add({
+        let attachmentURL = "";
+        if (attachment) {
+            const attachmentRef = storageService
+                .ref()
+                .child(`${userObj.uid}/${uuidv4()}`);
+            const response = await attachmentRef.putString(
+                attachment,
+                "data_url"
+            );
+            attachmentURL = await response.ref.getDownloadURL();
+        }
+        const pangObj = {
             text: pang,
             createdAt: Date.now(),
             author: userObj.uid,
-        });
-        const fileRef = storageService
-            .ref()
-            .child(`${userObj.uid}/${uuidv4()}`);
-        const response = await fileRef.putString(attachment, "data_url");
-        console.log(response);
+            attachmentURL,
+        };
+        await dbService.collection("pangs").add(pangObj);
         setPang("");
+        setAttachment("");
     };
     const onChange = (event) => {
         const {

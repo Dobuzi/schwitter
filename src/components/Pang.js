@@ -43,6 +43,14 @@ const Pang = ({ pangObj, isAuthor }) => {
             ) : (
                 <>
                     <h4>{pangObj.text}</h4>
+                    {pangObj.attachmentURL && (
+                        <img
+                            src={pangObj.attachmentURL}
+                            width="50px"
+                            height="50px"
+                            alt="pang img"
+                        />
+                    )}
                     {isAuthor && (
                         <>
                             <button onClick={onDeleteClick}>Delete</button>
