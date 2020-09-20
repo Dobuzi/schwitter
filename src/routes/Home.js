@@ -17,9 +17,9 @@ const Home = ({ userObj }) => {
     }, []);
 
     return (
-        <div>
+        <div className="container">
             <PangFactory userObj={userObj} />
-            <div>
+            <div className="home__pangs">
                 {pangs.map((pang) => (
                     <Pang
                         key={pang.id}

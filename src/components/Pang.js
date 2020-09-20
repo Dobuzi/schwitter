@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { dbService, storageService } from "../fbase";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash, faPencilAlt } from "@fortawesome/free-solid-svg-icons";
 
 const Pang = ({ pangObj, isAuthor }) => {
     const [editing, setEditing] = useState(false);
@@ -26,37 +28,44 @@ const Pang = ({ pangObj, isAuthor }) => {
         setNewPang(value);
     };
     return (
-        <div>
+        <div className="pang">
             {editing ? (
                 <>
-                    <form onSubmit={onSubmit}>
+                    <form onSubmit={onSubmit} className="container pangEdit">
                         <input
                             type="text"
                             placeholder="Edit your pang"
                             value={newPang}
                             required
+                            autoFocus
                             onChange={onChange}
+                            className="formInput"
                         />
-                        <input type="submit" value="Update" />
+                        <input
+                            type="submit"
+                            value="Update"
+                            className="formBtn"
+                        />
                     </form>
-                    <button onClick={toggleEditing}>Cancel</button>
+                    <span onClick={toggleEditing} className="formBtn cancelBtn">
+                        Cancel
+                    </span>
                 </>
             ) : (
                 <>
                     <h4>{pangObj.text}</h4>
                     {pangObj.attachmentURL && (
-                        <img
-                            src={pangObj.attachmentURL}
-                            width="50px"
-                            height="50px"
-                            alt="pang img"
-                        />
+                        <img src={pangObj.attachmentURL} alt="pang img" />
                     )}
                     {isAuthor && (
-                        <>
-                            <button onClick={onDeleteClick}>Delete</button>
-                            <button onClick={toggleEditing}>Edit</button>
-                        </>
+                        <div className="pang__actions">
+                            <span onClick={onDeleteClick}>
+                                <FontAwesomeIcon icon={faTrash} />
+                            </span>
+                            <span onClick={toggleEditing}>
+                                <FontAwesomeIcon icon={faPencilAlt} />
+                            </span>
+                        </div>
                     )}
                 </>
             )}
