@@ -7,13 +7,16 @@ import PangFactory from "../components/PangFactory";
 const Home = ({ userObj }) => {
     const [pangs, setPangs] = useState([]);
     useEffect(() => {
-        dbService.collection("pangs").onSnapshot((snapshot) => {
-            const pangArray = snapshot.docs.map((doc) => ({
-                id: doc.id,
-                ...doc.data(),
-            }));
-            setPangs(pangArray.sort((a, b) => a.createdAt < b.createdAt));
-        });
+        dbService
+            .collection("pangs")
+            .orderBy("createdAt", "desc")
+            .onSnapshot((snapshot) => {
+                const pangArray = snapshot.docs.map((doc) => ({
+                    id: doc.id,
+                    ...doc.data(),
+                }));
+                setPangs(pangArray.sort((a, b) => a.createdAt < b.createdAt));
+            });
     }, []);
 
     return (
