@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/schwitter/static/css/main.7102eae1.chunk.css",
+    "main.js": "/schwitter/static/js/main.c4cbf7b6.chunk.js",
+    "main.js.map": "/schwitter/static/js/main.c4cbf7b6.chunk.js.map",
+    "runtime-main.js": "/schwitter/static/js/runtime-main.f38b8717.js",
+    "runtime-main.js.map": "/schwitter/static/js/runtime-main.f38b8717.js.map",
+    "static/js/2.93b8df73.chunk.js": "/schwitter/static/js/2.93b8df73.chunk.js",
+    "static/js/2.93b8df73.chunk.js.map": "/schwitter/static/js/2.93b8df73.chunk.js.map",
+    "index.html": "/schwitter/index.html",
+    "precache-manifest.e087c2502c405958973bad4ea8a9db5a.js": "/schwitter/precache-manifest.e087c2502c405958973bad4ea8a9db5a.js",
+    "service-worker.js": "/schwitter/service-worker.js",
+    "static/css/main.7102eae1.chunk.css.map": "/schwitter/static/css/main.7102eae1.chunk.css.map",
+    "static/js/2.93b8df73.chunk.js.LICENSE.txt": "/schwitter/static/js/2.93b8df73.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f38b8717.js",
+    "static/js/2.93b8df73.chunk.js",
+    "static/css/main.7102eae1.chunk.css",
+    "static/js/main.c4cbf7b6.chunk.js"
+  ]
+}
