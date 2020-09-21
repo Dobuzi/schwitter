@@ -8,10 +8,10 @@ const PangFactory = ({ userObj }) => {
     const [pang, setPang] = useState("");
     const [attachment, setAttachment] = useState("");
     const onSubmit = async (event) => {
+        event.preventDefault();
         if (pang === "") {
             return;
         }
-        event.preventDefault();
         let attachmentURL = "";
         if (attachment) {
             const attachmentRef = storageService
