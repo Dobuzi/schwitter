@@ -5,12 +5,12 @@
 }
 
 .pang {
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     background-color: white;
     width: 100%;
     max-width: 320px;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 20px;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -23,18 +23,18 @@
 
 .pang img {
     right: -10px;
-    top: 20px;
+    top: 15px;
     position: absolute;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
+    border-radius: 10px;
+    width: auto;
+    height: 60px;
     margin-top: 10px;
 }
 
 .pang__actions {
     position: absolute;
-    right: 10px;
-    top: 10px;
+    right: 20px;
+    top: 8px;
 }
 
 .pang__actions span {

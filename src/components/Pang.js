@@ -28,7 +28,10 @@ const Pang = ({ pangObj, isAuthor }) => {
         setNewPang(value);
     };
     return (
-        <div className="pang">
+        <div
+            style={isAuthor ? { backgroundColor: "#55efc4" } : {}}
+            className="pang"
+        >
             {editing ? (
                 <>
                     <form onSubmit={onSubmit} className="container pangEdit">
@@ -53,7 +56,9 @@ const Pang = ({ pangObj, isAuthor }) => {
                 </>
             ) : (
                 <>
-                    <h4>{pangObj.text}</h4>
+                    <h4 style={isAuthor ? { color: "#636e72" } : {}}>
+                        {pangObj.text}
+                    </h4>
                     {pangObj.attachmentURL && (
                         <img src={pangObj.attachmentURL} alt="pang img" />
                     )}

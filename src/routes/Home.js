@@ -12,7 +12,7 @@ const Home = ({ userObj }) => {
                 id: doc.id,
                 ...doc.data(),
             }));
-            setPangs(pangArray);
+            setPangs(pangArray.sort((a, b) => a.createdAt < b.createdAt));
         });
     }, []);
 
