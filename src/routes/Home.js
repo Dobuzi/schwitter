@@ -4,18 +4,20 @@ import { dbService } from "../fbase";
 import Pang from "../components/Pang";
 import PangFactory from "../components/PangFactory";
 
+import "../style/home.css";
+
 const Home = ({ userObj }) => {
     const [pangs, setPangs] = useState([]);
     useEffect(() => {
         dbService
             .collection("pangs")
-            .orderBy("createdAt", "desc")
+            .orderBy("expiredAt", "desc")
             .onSnapshot((snapshot) => {
                 const pangArray = snapshot.docs.map((doc) => ({
                     id: doc.id,
                     ...doc.data(),
                 }));
-                setPangs(pangArray.sort((a, b) => a.createdAt < b.createdAt));
+                setPangs(pangArray);
             });
     }, []);
 

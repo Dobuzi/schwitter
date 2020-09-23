@@ -3,6 +3,8 @@ import { dbService, storageService } from "../fbase";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPencilAlt } from "@fortawesome/free-solid-svg-icons";
 
+import "../style/pang.css";
+
 const Pang = ({ pangObj, isAuthor }) => {
     const [editing, setEditing] = useState(false);
     const [newPang, setNewPang] = useState(pangObj.text);

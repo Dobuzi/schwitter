@@ -4,19 +4,24 @@ import { v4 as uuidv4 } from "uuid";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faTimes } from "@fortawesome/free-solid-svg-icons";
 
+import "../style/factory.css";
+
 const PangFactory = ({ userObj }) => {
     const [pang, setPang] = useState("");
     const [attachment, setAttachment] = useState("");
+    const t_limit = 10000;
     const onSubmit = async (event) => {
         event.preventDefault();
         if (pang === "") {
             return;
         }
         let attachmentURL = "";
+        let attachmentLocation = "";
         if (attachment) {
+            attachmentLocation = `${userObj.uid}/${uuidv4()}`;
             const attachmentRef = storageService
                 .ref()
-                .child(`${userObj.uid}/${uuidv4()}`);
+                .child(attachmentLocation);
             const response = await attachmentRef.putString(
                 attachment,
                 "data_url"
@@ -25,9 +30,10 @@ const PangFactory = ({ userObj }) => {
         }
         const pangObj = {
             text: pang,
-            createdAt: Date.now(),
+            expiredAt: Date.now() + t_limit,
             author: userObj.uid,
             attachmentURL,
+            attachmentLocation,
         };
         await dbService.collection("pangs").add(pangObj);
         setPang("");

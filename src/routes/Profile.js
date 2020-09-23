@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { authService, dbService } from "../fbase";
 
+import "../style/profile.css";
+
 const Profile = ({ userObj, refreshUser }) => {
     const history = useHistory();
     const [newDisplayName, setNewDisplayName] = useState(userObj.displayName);
@@ -13,7 +15,7 @@ const Profile = ({ userObj, refreshUser }) => {
         const myPangs = await dbService
             .collection("pangs")
             .where("author", "==", userObj.uid)
-            .orderBy("createdAt", "desc")
+            .orderBy("expiredAt", "desc")
             .get();
         return myPangs;
     };

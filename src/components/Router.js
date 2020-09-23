@@ -5,6 +5,8 @@ import Home from "../routes/Home";
 import Navigation from "./Navigation";
 import Profile from "../routes/Profile";
 
+import "../style/router.css";
+
 const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
     return (
         <Router>

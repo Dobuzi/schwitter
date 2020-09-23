@@ -4,6 +4,8 @@ import SocialAuthForm from "components/SocialAuthForm";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 
+import "../style/auth.css";
+
 const Auth = () => {
     return (
         <div className="authContainer">
