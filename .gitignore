@@ -39,4 +39,5 @@ sketch
 .history
 
 /build
+.env
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,react,firebase
