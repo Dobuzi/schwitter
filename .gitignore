@@ -1,7 +1,5 @@
-/build
-
-# Created by https://www.toptal.com/developers/gitignore/api/firebase,react
-# Edit at https://www.toptal.com/developers/gitignore?templates=firebase,react
+# Created by https://www.toptal.com/developers/gitignore/api/visualstudiocode,react,firebase
+# Edit at https://www.toptal.com/developers/gitignore?templates=visualstudiocode,react,firebase
 
 ### Firebase ###
 .idea
@@ -28,4 +26,17 @@ psd
 thumb
 sketch
 
-# End of https://www.toptal.com/developers/gitignore/api/firebase,react
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+### VisualStudioCode Patch ###
+# Ignore all local history of files
+.history
+
+/build
+# End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,react,firebase
