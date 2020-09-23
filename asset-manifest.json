@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/schwitter/static/css/main.253dbef7.chunk.css",
-    "main.js": "/schwitter/static/js/main.bbd14e31.chunk.js",
-    "main.js.map": "/schwitter/static/js/main.bbd14e31.chunk.js.map",
+    "main.css": "/schwitter/static/css/main.6015f1ad.chunk.css",
+    "main.js": "/schwitter/static/js/main.65f286ed.chunk.js",
+    "main.js.map": "/schwitter/static/js/main.65f286ed.chunk.js.map",
     "runtime-main.js": "/schwitter/static/js/runtime-main.f38b8717.js",
     "runtime-main.js.map": "/schwitter/static/js/runtime-main.f38b8717.js.map",
-    "static/js/2.93b8df73.chunk.js": "/schwitter/static/js/2.93b8df73.chunk.js",
-    "static/js/2.93b8df73.chunk.js.map": "/schwitter/static/js/2.93b8df73.chunk.js.map",
+    "static/js/2.2aa1a34e.chunk.js": "/schwitter/static/js/2.2aa1a34e.chunk.js",
+    "static/js/2.2aa1a34e.chunk.js.map": "/schwitter/static/js/2.2aa1a34e.chunk.js.map",
     "index.html": "/schwitter/index.html",
-    "precache-manifest.e15440e8ad6aaa52981a9a1f1bc6bd96.js": "/schwitter/precache-manifest.e15440e8ad6aaa52981a9a1f1bc6bd96.js",
+    "precache-manifest.142ec025853b209700779b8542f50d1b.js": "/schwitter/precache-manifest.142ec025853b209700779b8542f50d1b.js",
     "service-worker.js": "/schwitter/service-worker.js",
-    "static/css/main.253dbef7.chunk.css.map": "/schwitter/static/css/main.253dbef7.chunk.css.map",
-    "static/js/2.93b8df73.chunk.js.LICENSE.txt": "/schwitter/static/js/2.93b8df73.chunk.js.LICENSE.txt"
+    "static/css/main.6015f1ad.chunk.css.map": "/schwitter/static/css/main.6015f1ad.chunk.css.map",
+    "static/js/2.2aa1a34e.chunk.js.LICENSE.txt": "/schwitter/static/js/2.2aa1a34e.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.f38b8717.js",
-    "static/js/2.93b8df73.chunk.js",
-    "static/css/main.253dbef7.chunk.css",
-    "static/js/main.bbd14e31.chunk.js"
+    "static/js/2.2aa1a34e.chunk.js",
+    "static/css/main.6015f1ad.chunk.css",
+    "static/js/main.65f286ed.chunk.js"
   ]
 }
