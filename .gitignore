@@ -1,3 +1,6 @@
+/build
+.env
+
 # Created by https://www.toptal.com/developers/gitignore/api/visualstudiocode,react,firebase
 # Edit at https://www.toptal.com/developers/gitignore?templates=visualstudiocode,react,firebase
 
@@ -38,6 +41,4 @@ sketch
 # Ignore all local history of files
 .history
 
-/build
-.env
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,react,firebase
