@@ -30,12 +30,15 @@ exports.deleteImage = functions.firestore
     .document("pangs/{docId}")
     .onDelete((snap, _context) => {
         const attachmentLocation = snap.data().attachmentLocation;
-        const bucket = storage.bucket();
-        const file = bucket.file(attachmentLocation);
-        return file
-            .delete()
-            .then()
-            .catch((err) => {
-                console.error("error occurred", err);
-            });
+        if (attachmentLocation !== "") {
+            const bucket = storage.bucket();
+            const file = bucket.file(attachmentLocation);
+            return file
+                .delete()
+                .then()
+                .catch((err) => {
+                    console.error("error occurred", err);
+                });
+        }
+        return null
     });
