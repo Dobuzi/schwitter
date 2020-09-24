@@ -1,17 +1,19 @@
 .authBtns {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
-    max-width: 320px;
+    max-width: 200px;
 }
 
 .authBtn {
     cursor: pointer;
-    border-radius: 20px;
+    border-radius: 25px;
     border: none;
-    padding: 10px 0px;
+    padding: 10px;
     font-size: 12px;
     text-align: center;
-    width: 150px;
+    height: 50px;
+    width: 50px;
     background: white;
 }

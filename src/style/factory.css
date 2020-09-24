@@ -20,7 +20,7 @@
     height: 40px;
     padding: 0px 20px;
     color: white;
-    border: 1px solid #04aaff;
+    border: 1px solid #a29bfe;
     border-radius: 20px;
     font-weight: 500;
     font-size: 12px;
@@ -29,7 +29,7 @@
 .factoryInput__arrow {
     position: absolute;
     right: 0;
-    background-color: #04aaff;
+    background-color: #a29bfe;
     height: 40px;
     width: 40px;
     padding: 10px 0px;
@@ -37,10 +37,11 @@
     border-radius: 20px;
     color: white;
     box-sizing: border-box;
+    cursor: pointer;
 }
 
 .factoryInput__label {
-    color: #04aaff;
+    color: #a29bfe;
     cursor: pointer;
 }
 
@@ -56,13 +57,15 @@
 }
 
 .factoryForm__attachment img {
-    height: 80px;
-    width: 80px;
-    border-radius: 40px;
+    height: 120px;
+    width: auto;
+    border-radius: 10px;
 }
 
 .factoryForm__clear {
-    color: #04aaff;
+    background-color: black;
+    border: none;
+    color: #ff7675;
     cursor: pointer;
     text-align: center;
 }

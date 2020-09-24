@@ -1,8 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTwitter } from "@fortawesome/free-brands-svg-icons";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { faFire, faUser } from "@fortawesome/free-solid-svg-icons";
 
 import "../style/nav.css";
 
@@ -13,8 +12,8 @@ const Navigation = ({ userObj }) => {
                 <li>
                     <Link to="/" className="linkHome">
                         <FontAwesomeIcon
-                            icon={faTwitter}
-                            color={"#04AAFF"}
+                            icon={faFire}
+                            color={"#a29bfe"}
                             size="2x"
                         />
                     </Link>
@@ -23,7 +22,7 @@ const Navigation = ({ userObj }) => {
                     <Link to="/profile" className="linkProfile">
                         <FontAwesomeIcon
                             icon={faUser}
-                            color={"#04AAFF"}
+                            color={"#ffeaa7"}
                             size="2x"
                         />
                         <span className="linkProfileWord">

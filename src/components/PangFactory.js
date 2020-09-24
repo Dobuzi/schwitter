@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import { storageService, dbService } from "../fbase";
 import { v4 as uuidv4 } from "uuid";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faEraser, faPlus } from "@fortawesome/free-solid-svg-icons";
 
 import "../style/factory.css";
 
 const PangFactory = ({ userObj }) => {
     const [pang, setPang] = useState("");
     const [attachment, setAttachment] = useState("");
-    const t_limit = 10000;
+    const t_limit = 8000;
     const onSubmit = async (event) => {
         event.preventDefault();
         if (pang === "") {
@@ -100,8 +100,8 @@ const PangFactory = ({ userObj }) => {
                             onClick={onClearClick}
                             className="factoryForm__clear"
                         >
-                            <span>Remove</span>
-                            <FontAwesomeIcon icon={faTimes} />
+                            <span>Clear</span>
+                            <FontAwesomeIcon icon={faEraser} />
                         </button>
                     </div>
                 )}

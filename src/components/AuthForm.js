@@ -3,10 +3,10 @@ import { authService } from "../fbase";
 
 import "../style/authForm.css";
 
-const AuthForm = () => {
+const AuthForm = ({ newAccount, setNewAccount }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [newAccount, setNewAccount] = useState("false");
+    const [passwordCheck, setPasswordCheck] = useState("");
     const [error, setError] = useState("");
     const onChange = (event) => {
         const {
@@ -16,16 +16,22 @@ const AuthForm = () => {
             setEmail(value);
         } else if (name === "password") {
             setPassword(value);
+        } else if (name === "passwordCheck") {
+            setPasswordCheck(value);
         }
     };
     const onSubmit = async (event) => {
         event.preventDefault();
         try {
             if (newAccount) {
-                await authService.createUserWithEmailAndPassword(
-                    email,
-                    password
-                );
+                if (password === passwordCheck) {
+                    await authService.createUserWithEmailAndPassword(
+                        email,
+                        password
+                    );
+                } else {
+                    setError("The passwords are not the same.");
+                }
             } else {
                 await authService.signInWithEmailAndPassword(email, password);
             }
@@ -55,9 +61,18 @@ const AuthForm = () => {
                     onChange={onChange}
                     className="authInput"
                 />
+                {newAccount && (<input
+                    name="passwordCheck"
+                    type="password"
+                    placeholder="Repeat password"
+                    required
+                    value={passwordCheck}
+                    onChange={onChange}
+                    className="authInput"
+                />)}
                 <input
                     type="submit"
-                    value={newAccount ? "Create Account" : "Log In"}
+                    value={newAccount ? "Create Account" : "Sign In"}
                     className="authInput authSubmit"
                 />
                 {error && <span className="authError">{error}</span>}

@@ -7,23 +7,15 @@ const storage = admin.storage();
 
 exports.deletePang = functions.firestore
     .document("pangs/{docId}")
-    .onCreate((change, context) => {
-        const db = admin.firestore();
-        let newbatch = db.batch();
-
-        return db
-            .collection("pangs")
-            .where("expiredAt", "<=", Date.now())
-            .get()
-            .then((snapshot) => {
-                snapshot.forEach((doc) => {
-                    newbatch.delete(doc.ref);
-                });
-                return newbatch.commit();
-            })
-            .catch((err) => {
+    .onCreate((snap, context) => {
+        const expiredAt = snap.data().expiredAt;
+        return setTimeout(() => {
+            snap.ref.delete().then(
+                console.log(`${context.params.docId} deleted.`)
+            ).catch((err) => {
                 console.error("error occurred", err);
-            });
+            })
+        }, expiredAt - Date.now());
     });
 
 exports.deleteImage = functions.firestore

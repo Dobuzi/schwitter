@@ -1,11 +1,11 @@
-import { faGithub, faGoogle } from "@fortawesome/free-brands-svg-icons";
+import { faFacebook, faGithub, faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { authService, firebaseInstance } from "../fbase";
 
 import "../style/socialAuthForm.css";
 
-const SocialAuthForm = () => {
+const SocialAuthForm = ({ newAccount }) => {
     const onSocialClick = async (event) => {
         const {
             target: { name },
@@ -15,27 +15,37 @@ const SocialAuthForm = () => {
             provider = new firebaseInstance.auth.GoogleAuthProvider();
         } else if (name === "github") {
             provider = new firebaseInstance.auth.GithubAuthProvider();
+        } else if (name === "facebook") {
+            provider = new firebaseInstance.auth.FacebookAuthProvider();
         }
         await authService.signInWithPopup(provider);
     };
     return (
         <>
-            <div className="authBtns">
+            {!newAccount && (<div className="authBtns">
                 <button
                     onClick={onSocialClick}
                     name="google"
                     className="authBtn"
                 >
-                    Sign in with Google <FontAwesomeIcon icon={faGoogle} />
+                    <FontAwesomeIcon icon={faGoogle} size="2x" color="#4885ed" />
+                </button>
+                <button
+                    onClick={onSocialClick}
+                    name="facebook"
+                    className="authBtn"
+                >
+                    <FontAwesomeIcon icon={faFacebook} size="2x" color="#3b5998" />
                 </button>
                 <button
                     onClick={onSocialClick}
                     name="github"
                     className="authBtn"
                 >
-                    Sign in with Github <FontAwesomeIcon icon={faGithub} />
+                    <FontAwesomeIcon icon={faGithub} size="2x" />
                 </button>
-            </div>
+
+            </div>)}
         </>
     );
 };

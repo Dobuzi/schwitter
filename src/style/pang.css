@@ -15,6 +15,15 @@
     display: flex;
     flex-direction: column;
     color: rgba(0, 0, 0, 0.8);
+    box-shadow: 1px 1px 3px rgba(255, 255, 255, 0.8),
+        1px 1px 2px rgba(255, 255, 255, 0.7);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.pang:hover {
+    transform: scale(1.01);
+    box-shadow: 5px 8px 16px rgba(255, 255, 255, 0.8),
+        5px 5px 5px rgba(255, 255, 255, 1);
 }
 
 .pang h4 {

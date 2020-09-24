@@ -1,3 +1,5 @@
+import { faEdit } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { authService, dbService } from "../fbase";
@@ -49,14 +51,13 @@ const Profile = ({ userObj, refreshUser }) => {
                     value={newDisplayName}
                     className="formInput"
                 />
-                <input
+                <span
                     type="submit"
-                    value="Update Profile"
                     className="formBtn"
-                />
+                ><FontAwesomeIcon icon={faEdit} /></span>
             </form>
             <span onClick={onLogOutClick} className="formBtn cancelBtn logOut">
-                Log Out
+                Sign Out
             </span>
         </div>
     );
