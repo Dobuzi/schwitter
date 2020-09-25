@@ -11,6 +11,7 @@ const Home = ({ userObj }) => {
     useEffect(() => {
         dbService
             .collection("pangs")
+            .where("expiredAt", ">", Date.now())
             .orderBy("expiredAt", "desc")
             .onSnapshot((snapshot) => {
                 const pangArray = snapshot.docs.map((doc) => ({
