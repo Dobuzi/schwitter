@@ -11,11 +11,11 @@ const Navigation = ({ userObj }) => {
             <ul className="nav-ul">
                 <li>
                     <Link to="/" className="linkHome">
-                        <FontAwesomeIcon
+                        <span className="nav__logo"><FontAwesomeIcon
                             icon={faFire}
                             color={"#a29bfe"}
                             size="2x"
-                        />
+                        />pAAng!</span>
                     </Link>
                 </li>
                 <li>
@@ -25,11 +25,6 @@ const Navigation = ({ userObj }) => {
                             color={"#ffeaa7"}
                             size="2x"
                         />
-                        <span className="linkProfileWord">
-                            {userObj.displayName
-                                ? `${userObj.displayName}'s Profile`
-                                : "Profile"}
-                        </span>
                     </Link>
                 </li>
             </ul>

@@ -74,7 +74,7 @@ const PangFactory = ({ userObj }) => {
                     />
                     <input
                         type="submit"
-                        value="&rarr;"
+                        value="&darr;"
                         className="factoryInput__arrow"
                     />
                 </div>

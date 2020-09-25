@@ -1,6 +1,7 @@
 .nav-ul {
     display: flex;
     justify-content: center;
+    align-items: center;
     margin: 30px;
 }
 
@@ -19,4 +20,17 @@
 .linkProfileWord {
     margin-left: 20px;
     margin-top: 10px;
+}
+
+.nav__logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100px;
+    color: #a29bfe;
+    font-size: 20px;
+    font-weight: 900;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+        "Lucida Sans", Arial, sans-serif;
+    cursor: pointer;
 }
