@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/schwitter/precache-manifest.46abd37e6994b943b0781f20de8ca6c2.js"
+  "/schwitter/precache-manifest.e2bd86f4b27fa5371ae118ffa5ab5829.js"
 );
 
 self.addEventListener('message', (event) => {
