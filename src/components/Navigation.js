@@ -15,7 +15,7 @@ const Navigation = ({ userObj }) => {
                             icon={faFire}
                             color={"#a29bfe"}
                             size="2x"
-                        />pAAng!</span>
+                        />pang!</span>
                     </Link>
                 </li>
                 <li>

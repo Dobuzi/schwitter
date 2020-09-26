@@ -7,7 +7,7 @@ import { faFire } from "@fortawesome/free-solid-svg-icons";
 
 import "../style/auth.css";
 
-const Auth = () => {
+const Auth = ({ refreshUser }) => {
     const [newAccount, setNewAccount] = useState(false);
     const onClick = () => {
         window.location.reload();
@@ -21,7 +21,11 @@ const Auth = () => {
                     size="2x"
                 />
             pang!</span>
-            <AuthForm newAccount={newAccount} setNewAccount={setNewAccount} />
+            <AuthForm
+                newAccount={newAccount}
+                setNewAccount={setNewAccount}
+                refreshUser={refreshUser}
+            />
             <SocialAuthForm newAccount={newAccount} />
         </div>
     );

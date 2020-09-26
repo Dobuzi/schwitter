@@ -1,4 +1,4 @@
-import { faFacebook, faGithub, faGoogle } from "@fortawesome/free-brands-svg-icons";
+import { faGithub, faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { authService, firebaseInstance } from "../fbase";
@@ -15,10 +15,18 @@ const SocialAuthForm = ({ newAccount }) => {
             provider = new firebaseInstance.auth.GoogleAuthProvider();
         } else if (name === "github") {
             provider = new firebaseInstance.auth.GithubAuthProvider();
-        } else if (name === "facebook") {
-            provider = new firebaseInstance.auth.FacebookAuthProvider();
         }
-        await authService.signInWithPopup(provider);
+        await authService.signInWithRedirect(provider);
+        authService.getRedirectResult().then((result) => {
+            if (result.credential) {
+                const token = result.credential.accessToken;
+                console.log(token)
+            }
+            const user = result.user;
+            console.log(user)
+        }).catch((error) => {
+            console.log(error.message);
+        })
     };
     return (
         <>
@@ -29,13 +37,6 @@ const SocialAuthForm = ({ newAccount }) => {
                     className="authBtn"
                 >
                     <FontAwesomeIcon icon={faGoogle} size="2x" color="#4885ed" />
-                </button>
-                <button
-                    onClick={onSocialClick}
-                    name="facebook"
-                    className="authBtn"
-                >
-                    <FontAwesomeIcon icon={faFacebook} size="2x" color="#3b5998" />
                 </button>
                 <button
                     onClick={onSocialClick}

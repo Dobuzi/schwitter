@@ -1,4 +1,5 @@
 import * as firebase from "firebase/app";
+import "firebase/analytics";
 import "firebase/auth";
 import "firebase/firestore";
 import "firebase/storage";
@@ -12,13 +13,16 @@ var firebaseConfig = {
     storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
     messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
     appId: process.env.REACT_APP_APP_ID,
+    measurementId: process.env.REACT_APP_MEASUREMENT_ID,
 };
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+firebase.analytics();
 
 export const firebaseInstance = firebase;
 
 export const authService = firebase.auth();
 export const dbService = firebase.firestore();
 export const storageService = firebase.storage();
+export const firebaseui = require('firebaseui')

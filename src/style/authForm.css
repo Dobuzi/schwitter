@@ -26,6 +26,13 @@
     font-size: 12px;
 }
 
+.authSwitchContainer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 300px;
+}
+
 .authSwitch {
     color: #04aaff;
     cursor: pointer;
