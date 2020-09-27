@@ -10,6 +10,7 @@ const PangFactory = ({ userObj }) => {
     const [pang, setPang] = useState("");
     const [attachment, setAttachment] = useState("");
     const t_limit = 8000;
+    const MAX_SIZE = 200;
     const onSubmit = async (event) => {
         event.preventDefault();
         if (pang === "") {
@@ -28,12 +29,13 @@ const PangFactory = ({ userObj }) => {
             );
             attachmentURL = await response.ref.getDownloadURL();
         }
+        const compressedSize = `_${MAX_SIZE}x${MAX_SIZE}`;
         const pangObj = {
             text: pang,
             expiredAt: Date.now() + t_limit,
             author: userObj.uid,
-            attachmentURL,
-            attachmentLocation,
+            attachmentURL: attachmentURL,
+            attachmentLocation: attachmentLocation + compressedSize,
         };
         await dbService.collection("pangs").add(pangObj);
         setPang("");
@@ -45,17 +47,48 @@ const PangFactory = ({ userObj }) => {
         } = event;
         setPang(value);
     };
+    const resizeImage = (result, file) => {
+        const img = document.createElement("img");
+        img.src = result;
+        const canvas = document.createElement("canvas");
+        const MAX_WIDTH = MAX_SIZE;
+        const MAX_HEIGHT = MAX_SIZE;
+        let width = img.width;
+        let height = img.height;
+
+        if (width > height) {
+            if (width > MAX_WIDTH) {
+                height *= MAX_WIDTH / width;
+                width = MAX_WIDTH;
+            }
+        } else {
+            if (height > MAX_HEIGHT) {
+                width *= MAX_HEIGHT / height;
+                height = MAX_HEIGHT;
+            }
+        }
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0, width, height);
+        return {
+            data: canvas.toDataURL(file.type),
+            file
+        }
+    }
     const onFileChange = (event) => {
         const {
             target: { files },
         } = event;
-        const theFile = files[0];
+        let theFile = files[0];
         const reader = new FileReader();
         reader.onloadend = (finishedEvent) => {
             const {
                 target: { result },
             } = finishedEvent;
-            setAttachment(result);
+            const resizeData = resizeImage(result, theFile);
+            theFile = resizeData.file;
+            setAttachment(resizeData.data);
         };
         reader.readAsDataURL(theFile);
     };
