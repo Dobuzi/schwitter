@@ -47,7 +47,7 @@ const PangFactory = ({ userObj }) => {
         } = event;
         setPang(value);
     };
-    const resizeImage = (result, file) => {
+    const resizeImage = (result, type) => {
         const img = document.createElement("img");
         img.src = result;
         const canvas = document.createElement("canvas");
@@ -71,25 +71,22 @@ const PangFactory = ({ userObj }) => {
         canvas.height = height;
         const ctx = canvas.getContext("2d");
         ctx.drawImage(img, 0, 0, width, height);
-        return {
-            data: canvas.toDataURL(file.type),
-            file
-        }
+        return canvas.toDataURL(type)
     }
     const onFileChange = (event) => {
         const {
             target: { files },
         } = event;
-        let theFile = files[0];
+        const theFile = files[0];
         const reader = new FileReader();
-        reader.onloadend = (finishedEvent) => {
-            const {
-                target: { result },
-            } = finishedEvent;
-            const resizeData = resizeImage(result, theFile);
-            theFile = resizeData.file;
-            setAttachment(resizeData.data);
-        };
+        if (theFile) {
+            reader.onload = (finishedEvent) => {
+                const {
+                    target: { result },
+                } = finishedEvent;
+                setAttachment(resizeImage(result, theFile.type));
+            };
+        }
         reader.readAsDataURL(theFile);
     };
     const onClearClick = () => setAttachment("");
